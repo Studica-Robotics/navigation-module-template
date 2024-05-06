@@ -7,6 +7,8 @@
 
 package frc.robot;
 
+import com.studica.frc.MockDS;
+
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
@@ -23,6 +25,8 @@ public class Robot extends TimedRobot
 
   private RobotContainer m_robotContainer;
 
+  private MockDS ds;
+  private boolean active = false;
   private int countLED;
   private boolean prevLEDValue;
 
@@ -36,6 +40,7 @@ public class Robot extends TimedRobot
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
+    ds = new MockDS();
     RobotContainer.driveTrain.setRunningLED(false);
     RobotContainer.driveTrain.setStoppedLED(false);
     countLED = 1;
@@ -57,6 +62,21 @@ public class Robot extends TimedRobot
     // and running subsystem periodic() methods.  This must be called from the robot's periodic
     // block in order for anything in the Command-based framework to work.
     CommandScheduler.getInstance().run();
+
+    // If Start button pushed enabled robot in auto mode
+    if (!RobotContainer.driveTrain.getStartButton() && !active)
+    {
+      ds.enable();
+      active = true;
+      if (!RobotContainer.driveTrain.scanning)
+        RobotContainer.driveTrain.startLidar();
+    }
+    // If E-Stop button is pushed disable the robot
+    if (!RobotContainer.driveTrain.getEStopButton() && active)
+    {
+      ds.disable();
+      active = false;
+    }
   }
 
   /**
@@ -67,6 +87,7 @@ public class Robot extends TimedRobot
   {
     RobotContainer.driveTrain.setRunningLED(true);
     RobotContainer.driveTrain.setStoppedLED(false);
+    RobotContainer.driveTrain.stopLidar();
   }
 
   @Override

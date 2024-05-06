@@ -3,7 +3,6 @@ package frc.robot.subsystems;
 import com.kauailabs.navx.frc.AHRS;
 import com.studica.frc.Lidar;
 import com.studica.frc.TitanQuad;
-import com.studica.frc.TitanQuadEncoder;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DigitalOutput;
@@ -27,14 +26,6 @@ public class DriveTrain extends SubsystemBase
     private TitanQuad backRightMotor;
 
     /**
-     * Encoders
-     */
-    private TitanQuadEncoder frontLeftEncoder;
-    private TitanQuadEncoder backLeftEncoder;
-    private TitanQuadEncoder frontRightEncoder;
-    private TitanQuadEncoder backRightEncoder;
-
-    /**
      * IMU
      */
     private AHRS navX;
@@ -55,6 +46,11 @@ public class DriveTrain extends SubsystemBase
     public boolean scanning = true; // flag to prevent updating when not scanning
 
     /**
+     * Variables to reduce overhead
+     */
+    double denomantor = 0;
+
+    /**
      * DriveTrain Constructor
      */
     public DriveTrain()
@@ -71,37 +67,20 @@ public class DriveTrain extends SubsystemBase
         Timer.delay(1.0); // Wait 1s for Titan to configure
 
         /**
-         * Encoders
-         */
-
-        frontLeftEncoder = new TitanQuadEncoder(frontLeftMotor, Constants.FRONT_LEFT_MOTOR, Constants.WHEEL_DIST_PER_TICK);
-        backLeftEncoder = new TitanQuadEncoder(backLeftMotor, Constants.BACK_LEFT_MOTOR, Constants.WHEEL_DIST_PER_TICK);
-        frontRightEncoder = new TitanQuadEncoder(frontRightMotor, Constants.FRONT_RIGHT_MOTOR, Constants.WHEEL_DIST_PER_TICK);
-        backRightEncoder = new TitanQuadEncoder(backRightMotor, Constants.BACK_RIGHT_MOTOR, Constants.WHEEL_DIST_PER_TICK);
-
-        /**
          * Motor Flags
          */
         
         // Front Left Motor
         frontLeftMotor.setInverted(false);
-        frontLeftMotor.invertRPM();
-        frontLeftEncoder.setReverseDirection();
- 
+
         // Back Left Motor
         backLeftMotor.setInverted(false);
-        backLeftMotor.invertRPM();
-        backLeftEncoder.setReverseDirection();
 
         // Front Right Motor
         frontRightMotor.setInverted(false);
-        frontRightMotor.invertRPM();
-        frontRightEncoder.setReverseDirection();
 
         // Back Right Motor
         backRightMotor.setInverted(false);
-        backRightMotor.invertRPM();
-        backRightEncoder.setReverseDirection();
 
         /**
          * IMU
@@ -120,17 +99,11 @@ public class DriveTrain extends SubsystemBase
          * Lidar
          */
         lidar = new Lidar(Lidar.Port.kUSB1);
-    }
 
-    /**
-     * Reset all encoders
-     */
-    public void resetEncoders()
-    {
-        frontLeftEncoder.reset();
-        backLeftEncoder.reset();
-        frontRightEncoder.reset();
-        backRightEncoder.reset();
+        /**
+         * Cleanup functions after init
+         */
+        zeroYaw();
     }
 
     /**
@@ -196,75 +169,70 @@ public class DriveTrain extends SubsystemBase
     }
 
     /**
-     * Get the distance travelled by the front left motor
-     * @return - the distance in mm travelled.
+     * Controls the stack robot
+     * @param x - movement in the x axis
+     * @param y - movement in the y axis
      */
-    public double getFrontLeftEncoder()
+    public void stackMotorControl(double x, double y)
     {
-        return frontLeftEncoder.getEncoderDistance();
+        frontLeftMotor.set(y + x);
+        backLeftMotor.set(y + x);
+        frontRightMotor.set(y - x);
+        backRightMotor.set(y - x);
     }
 
     /**
-     * Get the distance travelled by the back left motor
-     * @return - the distance in mm travelled.
+     * Controls the two wheel robot
+     * @param x - movement in the x axis
+     * @param y - movement in the y axis
      */
-    public double getBackLeftEncoder()
+    public void twoWheelMotorControl(double x, double y)
     {
-        return backLeftEncoder.getEncoderDistance();
+        frontLeftMotor.set(y + x);
+        frontRightMotor.set(y - x);
     }
 
     /**
-     * Get the distance travelled by the front right motor
-     * @return - the distance in mm travelled.
+     * Controls the six wheel robot
+     * @param x - movement in the x axis
+     * @param y - movement in the y axis
      */
-    public double getFrontRightEncoder()
+    public void sixWheel(double x, double y)
     {
-        return frontRightEncoder.getEncoderDistance();
+        frontLeftMotor.set(y + x);
+        backLeftMotor.set(y + x);
+        frontRightMotor.set(y - x);
+        backRightMotor.set(y - x);
     }
 
     /**
-     * Get the distance travelled by the back right motor
-     * @return - the distance in mm travelled.
+     * Controls the mecanum robot
+     * @param x - movement in the x axis
+     * @param y - movement in the y axis
+     * @param z - movement in the z axis
      */
-    public double getBackRightEncoder()
+    public void mecanumMotorControl(double x, double y, double z)
     {
-        return backRightEncoder.getEncoderDistance();
+        denomantor = Math.max(Math.abs(x) + Math.abs(y) + Math.abs(z), 1.0);
+        frontLeftMotor.set(y + (x) + z / denomantor);
+        backLeftMotor.set(y - (x) + z / denomantor);
+        frontRightMotor.set(y - (x) - z / denomantor);
+        backRightMotor.set(y + (x) - z / denomantor);
     }
 
     /**
-     * Get the RPM of the Front Left Motor
-     * @return - RPM of Front Left Motor
+     * Controls the x bot robot
+     * @param x - movement in the x axis
+     * @param y - movement in the y axis
+     * @param z - movement in the z axis
      */
-    public double getFrontLeftRPM()
+    public void xBotMotorControl(double x, double y, double z)
     {
-        return frontLeftMotor.getRPM();
-    }
-
-    /**
-     * Get the RPM of the Back Left Motor
-     * @return - RPM of Back Left Motor
-     */
-    public double getBackLeftRPM()
-    {
-        return backLeftMotor.getRPM();
-    }
-
-    /**
-     * Get the RPM of the Front Right Motor
-     * @return - RPM of Front Right Motor
-     */
-    public double getFrontRightRPM()
-    {
-        return frontRightMotor.getRPM();
-    }
-
-    /**
-     * Get the RPM of the Back Right Motor
-     * @return - RPM of Back Right Motor
-     */
-    public double getBackRightRPM()
-    {
-        return backRightMotor.getRPM();
+        denomantor = Math.max(Math.abs(x) + Math.abs(y) + Math.abs(z), 1.0);
+        frontLeftMotor.set(y + (x) + z / denomantor);
+        backLeftMotor.set(y - (x) + z / denomantor);
+        frontRightMotor.set(y - (x) - z / denomantor);
+        backRightMotor.set(y + (x) - z / denomantor);
     }
 
     /**
@@ -286,6 +254,14 @@ public class DriveTrain extends SubsystemBase
     }
 
     /**
+     * Zero the yaw of the internal IMU.
+     */
+    public void zeroYaw()
+    {
+        navX.zeroYaw();
+    }
+
+    /**
      * Everything in this method runs once every robot loop a.k.a 20ms
      */
     @Override
@@ -303,14 +279,6 @@ public class DriveTrain extends SubsystemBase
         {
             SmartDashboard.putNumber("Yaw", getYaw());
             SmartDashboard.putNumber("Angle", getAngle());
-            SmartDashboard.putNumber("Front Left Encoder Dist", getFrontLeftEncoder());
-            SmartDashboard.putNumber("Back Left Encoder Dist", getBackLeftEncoder());
-            SmartDashboard.putNumber("Front Right Encoder Dist", getFrontRightEncoder());
-            SmartDashboard.putNumber("Back Right Encoder Dist", getBackRightEncoder());
-            SmartDashboard.putNumber("Front Left RPM", getFrontLeftRPM());
-            SmartDashboard.putNumber("Back Left RPM", getBackLeftRPM());
-            SmartDashboard.putNumber("Front Right RPM", getFrontRightRPM());
-            SmartDashboard.putNumber("Back Right RPM", getBackRightRPM());
         }
     }
 }

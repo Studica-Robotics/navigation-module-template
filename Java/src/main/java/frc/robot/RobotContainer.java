@@ -8,6 +8,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.commands.auto.Navigation;
 import frc.robot.subsystems.DriveTrain;
 
 /**
@@ -37,6 +38,6 @@ public class RobotContainer
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return null;
+    return new Navigation();
   }
 }
