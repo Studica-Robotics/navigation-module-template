@@ -16,3 +16,13 @@ When MockDS code is included in a project the console station **cannot** be used
 
 During the acutal run no computer will be connected. 
 
+## Commiting Code
+
+If you would like to add code to this template for use in the navigation module please submit a Pull Request. 
+
+Requirements for Pull Request:
+
+- Username must be known to Studica, will ensure we know who commits to the project. Usernames of the country they are assosiated with can be emailed to us via engineering@studica.com or posted in the Navigation Template forum post on the WorldSkills Forum. 
+- Code must be sumbitted for both Java and C++.
+
+
