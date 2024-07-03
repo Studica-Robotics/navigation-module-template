@@ -28,5 +28,5 @@ class RobotContainer
   DriveTrain drive;
  private:
   // The robot's subsystems and commands are defined here...
-  AutoCommand autoCmd;
+  AutoCommand autoCmd{&drive};
 };

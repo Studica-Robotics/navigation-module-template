@@ -7,12 +7,13 @@
 
 #include "RobotContainer.h"
 
-RobotContainer::RobotContainer() : autoCmd(&drive) {
+RobotContainer::RobotContainer()
+{
   // Initialize all of your commands and subsystems here
-
 }
 
-frc2::Command* RobotContainer::GetAutonomousCommand() {
+frc2::Command* RobotContainer::GetAutonomousCommand() 
+{
   // An example command will be run in autonomous
   return &autoCmd;
 }

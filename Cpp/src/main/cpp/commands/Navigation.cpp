@@ -1,8 +1,8 @@
 #include "commands/Navigation.h"
 
-Navigation::Navigation(DriveTrain* drive)
+Navigation::Navigation(DriveTrain* driveTrain) : drive{driveTrain}
 {
-    AddRequirements({drive});
+    AddRequirements({driveTrain});
 }
 
 void Navigation::Initialize()
