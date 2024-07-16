@@ -1,10 +1,10 @@
 {
     "fileName": "Studica.json",
     "name": "Studica",
-    "version": "1.1.28",
+    "version": "1.1.27",
     "uuid": "e7331fe2-cfaf-4728-878f-03e918da42c5",
     "mavenUrls": [
-        "http://dev.studica.com/maven/release/dev/"
+        "http://dev.studica.com/maven/release/"
     ],
     "jsonUrl": "http://dev.studica.com/releases/2020/Studica.json",
     "cppDependencies": [
@@ -21,7 +21,7 @@
             "libName": "Studica",
             "sharedLibrary": false,
             "skipInvalidPlatforms": true,
-            "version": "1.1.28"
+            "version": "1.1.27"
         },
         {
             "artifactId": "Studica-driver",
@@ -36,14 +36,14 @@
             "libName": "StudicaDriver",
             "sharedLibrary": false,
             "skipInvalidPlatforms": true,
-            "version": "1.1.28"
+            "version": "1.1.27"
         }
     ],
     "javaDependencies": [
         {
             "artifactId": "Studica-java",
             "groupId": "com.studica.frc",
-            "version": "1.1.28"
+            "version": "1.1.27"
         }
     ],
     "jniDependencies": [
@@ -58,7 +58,7 @@
                 "linuxathena",
                 "linuxraspbian"
             ],
-            "version": "1.1.28"
+            "version": "1.1.27"
         }
     ]
 }
