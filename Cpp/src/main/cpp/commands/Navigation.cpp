@@ -1,8 +1,8 @@
 #include "commands/Navigation.h"
 
-Navigation::Navigation(DriveTrain* driveTrain) : drive{driveTrain}
+Navigation::Navigation(DriveTrain* driveTrain, DepthCamera* depthCamera) : drive{driveTrain}, camera{depthCamera}
 {
-    AddRequirements({driveTrain});
+    AddRequirements({driveTrain, depthCamera});
 }
 
 void Navigation::Initialize()

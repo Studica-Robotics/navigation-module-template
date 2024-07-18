@@ -11,6 +11,7 @@
 
 #include "commands/AutoCommand.h"
 #include "subsystems/DriveTrain.h"
+#include "subsystems/DepthCamera.h"
 
 /**
  * This class is where the bulk of the robot should be declared.  Since
@@ -26,7 +27,8 @@ class RobotContainer
 
   frc2::Command* GetAutonomousCommand();
   DriveTrain drive;
+  DepthCamera camera;
  private:
   // The robot's subsystems and commands are defined here...
-  AutoCommand autoCmd{&drive};
+  AutoCommand autoCmd{&drive, &camera};
 };

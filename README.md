@@ -6,7 +6,8 @@ This is the template for the navigation module for Worldskills 2024 Lyon Autonom
 
 There is a java and c++ project that will drive any of the five robots forward at 50% speed. Currently, only the Stack Robot is set to output anything, modify the project as needed for the robot in use. 
 
-**Only the sensors available on the robots have had code added. If there is no code for a sensor it is not wired on the robot. Ex.. Encoders.**
+> [!NOTE]
+> Only the sensors available on the robots have had code added. If there is no code for a sensor it is not wired on the robot. Ex.. Encoders.
 
 ## MockDS
 

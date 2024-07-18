@@ -1,55 +1,55 @@
 {
-    "fileName": "Studica.json",
-    "name": "Studica",
-    "version": "1.1.28",
-    "uuid": "e7331fe2-cfaf-4728-878f-03e918da42c5",
+    "fileName": "Orbbec.json",
+    "name": "Orbbec",
+    "version": "1.10.9",
+    "uuid": "492799c7-49cd-4d33-bbd0-ea736ebdbb75",
     "mavenUrls": [
         "https://dev.studica.com/maven/release/"
     ],
-    "jsonUrl": "https://dev.studica.com/releases/2020/Studica.json",
+    "jsonUrl": "https://dev.studica.com/releases/2020/Orbbec.json",
     "cppDependencies": [
         {
-            "artifactId": "Studica-cpp",
+            "artifactId": "OrbbecSdkFrc-cpp",
             "binaryPlatforms": [
                 "windowsx86-64",
                 "windowsx86",
                 "linuxathena",
                 "linuxraspbian"
             ],
-            "groupId": "com.studica.frc",
+            "groupId": "com.orbbec.frc",
             "headerClassifier": "headers",
-            "libName": "Studica",
-            "sharedLibrary": false,
+            "libName": "OrbbecSDK",
+            "sharedLibrary": true,
             "skipInvalidPlatforms": true,
-            "version": "1.1.28"
+            "version": "1.10.9"
         },
         {
-            "artifactId": "Studica-driver",
+            "artifactId": "OrbbecSdkFrc-driver",
             "binaryPlatforms": [
                 "windowsx86-64",
                 "windowsx86",
                 "linuxathena",
                 "linuxraspbian"
             ],
-            "groupId": "com.studica.frc",
+            "groupId": "com.orbbec.frc",
             "headerClassifier": "headers",
-            "libName": "StudicaDriver",
-            "sharedLibrary": false,
+            "libName": "OrbbecSdkFrcDriver",
+            "sharedLibrary": true,
             "skipInvalidPlatforms": true,
-            "version": "1.1.28"
+            "version": "1.10.9"
         }
     ],
     "javaDependencies": [
         {
-            "artifactId": "Studica-java",
-            "groupId": "com.studica.frc",
-            "version": "1.1.28"
+            "artifactId": "OrbbecSdkFrc-java",
+            "groupId": "com.orbbec.frc",
+            "version": "1.10.9"
         }
     ],
     "jniDependencies": [
         {
-            "artifactId": "Studica-driver",
-            "groupId": "com.studica.frc",
+            "artifactId": "OrbbecSdkFrc-driver",
+            "groupId": "com.orbbec.frc",
             "isJar": false,
             "skipInvalidPlatforms": true,
             "validPlatforms": [
@@ -58,7 +58,7 @@
                 "linuxathena",
                 "linuxraspbian"
             ],
-            "version": "1.1.28"
+            "version": "1.10.9"
         }
     ]
 }

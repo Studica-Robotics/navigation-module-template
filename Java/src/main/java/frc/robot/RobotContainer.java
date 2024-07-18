@@ -9,6 +9,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.commands.auto.Navigation;
+import frc.robot.subsystems.DepthCamera;
 import frc.robot.subsystems.DriveTrain;
 
 /**
@@ -22,6 +23,7 @@ public class RobotContainer
 {
   // The robot's subsystems and commands are defined here...
   public static DriveTrain driveTrain;
+  public static DepthCamera depthCamera;
 
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
@@ -29,6 +31,7 @@ public class RobotContainer
   public RobotContainer() 
   {
     driveTrain = new DriveTrain();
+    depthCamera = new DepthCamera();
   }
 
   /**
