@@ -22,16 +22,18 @@ namespace constant
      * Motors
      */
     static constexpr int TITAN_ID           = 42; // Titan CAN ID
-    static constexpr int FRONT_LEFT_MOTOR   = 0;  // M0
+    
+    static constexpr int FRONT_LEFT_MOTOR   = 3;  // M0
     static constexpr int FRONT_RIGHT_MOTOR  = 1;  // M1
     static constexpr int BACK_LEFT_MOTOR    = 2;  // M2
-    static constexpr int BACK_RIGHT_MOTOR   = 3;  // M3
+    static constexpr int BACK_RIGHT_MOTOR   = 0;  // M3
 
     /**
      * Digital I/O
      */
+
     static constexpr int START_BUTTON       = 9;  // Digital Input 9
-    static constexpr int E_STOP_BUTTON      = 11; // Digital Input 11
+    static constexpr int E_STOP_BUTTON      = 8; // Digital Input 11
     static constexpr int RUNNING_LED        = 20; // Digital Output 20
     static constexpr int STOPPED_LED        = 21; // Digital Output 21
 }
