@@ -74,9 +74,9 @@ void Robot::AutonomousInit()
 {
   m_container.drive.SetRunningLED(true);
   m_container.drive.SetStoppedLED(false);
-  m_autonomousCommand = m_container.GetAutonomousCommand();
+  m_navigationCommand = m_container.GetNavigateCommand();
 
-  if (m_autonomousCommand != nullptr) {
+  if (m_navigationCommand != nullptr) {
     m_autonomousCommand->Schedule();
   }
 }

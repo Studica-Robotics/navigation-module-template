@@ -5,12 +5,11 @@
 DriveTrain::DriveTrain()
 {
     ResetYaw();
-
     //Motor Invert flags
     frontLeftMotor.SetInverted(false);
     backLeftMotor.SetInverted(false);
-    frontRightMotor.SetInverted(true);
-    backRightMotor.SetInverted(true);
+    frontRightMotor.SetInverted(false);
+    backRightMotor.SetInverted(false);
 }
 
 double DriveTrain::GetYaw()
@@ -50,9 +49,18 @@ void DriveTrain::SetStoppedLED(bool on)
 
 void DriveTrain::LidarStop()
 {
+    lidar.Start();
+    
+    //lidar.ClusterConfig(50.0f, 5);
+    lidar.KalmanConfig(1e-4f, 0.2f, 1.0f);
+    // lidar.MovingAverageConfig(5);
+    //lidar.MedianConfig(5);
+    // lidar.JitterConfig(50.0f);
+    // enable filter
+    lidar.EnableFilter(studica::Lidar::Filter::kKALMAN, true);
+
     if (!lidarRunning)
     {
-        lidar.Start();
         lidarRunning = true;
     }
 }

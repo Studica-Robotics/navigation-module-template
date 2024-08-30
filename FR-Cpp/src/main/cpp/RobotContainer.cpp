@@ -17,3 +17,9 @@ frc2::Command* RobotContainer::GetAutonomousCommand()
   // An example command will be run in autonomous
   return &autoCmd;
 }
+
+frc2::Command* RobotContainer::GetNavigateCommand() 
+{
+  // An example command will be run in autonomous
+  return &navCmd;
+}

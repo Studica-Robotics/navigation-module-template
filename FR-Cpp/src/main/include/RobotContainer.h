@@ -31,4 +31,5 @@ class RobotContainer
  private:
   // The robot's subsystems and commands are defined here...
   AutoCommand autoCmd{&drive, &camera};
+  NavigateCommand navCmd{&drive};
 };
