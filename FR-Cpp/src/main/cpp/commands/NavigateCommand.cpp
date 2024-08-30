@@ -272,8 +272,10 @@ bool NavigateCommand::CheckEndCondition()
         bool isFrontEnd = GetAverageDistanceInZone(AdjustAngleForLidarOffset(angleFront - endRotTolerance), AdjustAngleForLidarOffset(angleFront + endRotTolerance)) < endFrontSideThreshold;
         float angleLeftDist = GetAverageDistanceInZone(AdjustAngleForLidarOffset(angleFrontLeft), AdjustAngleForLidarOffset(angleLeft));
         float angleRightDist = GetAverageDistanceInZone(AdjustAngleForLidarOffset(angleRight), AdjustAngleForLidarOffset(angleFrontRight));
-        bool areSidesEnd = (angleLeftDist < endCloseSideThreshold && angleRightDist < endFarSideThreshold && angleRightDist > endMinFarSideThreshold) ||
-                           (angleRightDist < endCloseSideThreshold && angleLeftDist < endFarSideThreshold && angleLeftDist > endMinFarSideThreshold);
+        bool areSidesEnd = ((angleLeftDist < endCloseSideThreshold && angleRightDist < endFarSideThreshold && angleRightDist > endMinFarSideThreshold) 
+        || (angleRightDist < endCloseSideThreshold && angleLeftDist < endFarSideThreshold && angleLeftDist > endMinFarSideThreshold)) 
+        && (angleFrontLeftRelative == angleFrontRightRelative && angleFrontRightRelative == angleFrontRelative);
+
 
         end = true;
         SendControl(0, 0);
@@ -284,7 +286,7 @@ bool NavigateCommand::CheckEndCondition()
 
 float NavigateCommand::DetermineTurnDirection()
 {
-    float averageLeft, averageRight = 0;
+    float averageLeft = 0, averageRight = 0;
 
     float robotYaw = NormalizeAngle(m_drive->GetYaw());
 
@@ -449,7 +451,6 @@ void NavigateCommand::Turn(int targetYaw)
 void NavigateCommand::WallFollowing()
 {
     float leftWallDistance = GetAverageDistanceInZone(NormalizeLidarAngle(leftWallAngle - lidarAngleRange), NormalizeLidarAngle(leftWallAngle + lidarAngleRange));
-    float rightWallDistance = GetAverageDistanceInZone(NormalizeLidarAngle(rightWallAngle - lidarAngleRange), NormalizeLidarAngle(rightWallAngle + lidarAngleRange));
 
     float frontLeftWallDistance = GetAverageDistanceInZone(NormalizeLidarAngle(frontLeftAngle - lidarAngleRange), NormalizeLidarAngle(frontLeftAngle + lidarAngleRange));
     float frontRightWallDistance = GetAverageDistanceInZone(NormalizeLidarAngle(frontRightAngle - lidarAngleRange), NormalizeLidarAngle(frontRightAngle + lidarAngleRange));
@@ -645,7 +646,6 @@ void NavigateCommand::Following()
     std::vector<float> zoneDistances(total_zones, 0.0f);
     for (int zone = 0; zone < total_zones; ++zone)
     {
-        float sum = 0;
         int startAngle = NormalizeAngle(lidar_start_angle + zone * lidar_angle_range);
         int endAngle = NormalizeAngle(lidar_start_angle + (zone + 1) * lidar_angle_range);
         zoneDistances[zone] = CalculateMedianDistance(startAngle, endAngle);
@@ -665,7 +665,7 @@ void NavigateCommand::Following()
 
     //step 2
     float sum = 0;
-    for (int i = 0; i < zoneDistances.size(); i++)
+    for (size_t i = 0; i < zoneDistances.size(); i++)
     {
         sum += zoneDistances[i];
     }
@@ -715,7 +715,7 @@ float NavigateCommand::CalculateAngularVelocity(const std::vector<float>& zoneDi
     }
 
     //
-    float groupAverages[total_groups] = {0.0f, 0.0f, 0.0f, 0.0f};
+    float groupAverages[total_groups] = {0.0f};
     for (int group = 0; group < total_groups; ++group)
     {
         float sum = 0.0f;
@@ -726,11 +726,11 @@ float NavigateCommand::CalculateAngularVelocity(const std::vector<float>& zoneDi
         groupAverages[group] = sum / group_size;
     }
 
-    float max_group_distance = *std::max_element(groupAverages, groupAverages + total_groups);
+    //float max_group_distance = *std::max_element(groupAverages, groupAverages + total_groups);
     int max_group_index = std::distance(groupAverages, std::max_element(groupAverages, groupAverages + total_groups));
 
-    int group_start_angle = lidar_start_angle + max_group_index * (group_size * lidar_angle_range);
-    int group_end_angle = group_start_angle + (group_size * lidar_angle_range);
+    //int group_start_angle = lidar_start_angle + max_group_index * (group_size * lidar_angle_range);
+    //int group_end_angle = group_start_angle + (group_size * lidar_angle_range);
     
     float max_distance = -1.0f;
     int target_zone_index = -1;

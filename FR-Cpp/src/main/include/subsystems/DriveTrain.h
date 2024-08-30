@@ -32,14 +32,14 @@ class DriveTrain : public frc2::SubsystemBase
         void XBotMotorControl(double x, double y, double z);
         // Lidar
         bool lidarRunning = true;
+        studica::Lidar lidar{studica::Lidar::Port::kUSB1};
+        studica::Lidar::ScanData scanData;
     private:
         studica::TitanQuad frontLeftMotor{constant::TITAN_ID, constant::FRONT_LEFT_MOTOR};
         studica::TitanQuad backLeftMotor{constant::TITAN_ID, constant::BACK_LEFT_MOTOR};
         studica::TitanQuad frontRightMotor{constant::TITAN_ID, constant::FRONT_RIGHT_MOTOR};
         studica::TitanQuad backRightMotor{constant::TITAN_ID, constant::BACK_RIGHT_MOTOR};
         AHRS navX{frc::SPI::Port::kMXP};
-        studica::Lidar lidar{studica::Lidar::Port::kUSB1};
-        studica::Lidar::ScanData scanData;
         frc::DigitalInput startButton{constant::START_BUTTON};
         frc::DigitalInput eStopButton{constant::E_STOP_BUTTON};
         frc::DigitalOutput runningLED{constant::RUNNING_LED};

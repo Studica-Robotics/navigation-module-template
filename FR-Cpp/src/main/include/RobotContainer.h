@@ -26,6 +26,7 @@ class RobotContainer
   RobotContainer();
 
   frc2::Command* GetAutonomousCommand();
+  frc2::Command* GetNavigateCommand();
   DriveTrain drive;
   DepthCamera camera;
  private:
