@@ -5,10 +5,9 @@
 #include <frc2/command/CommandHelper.h>
 
 #include "subsystems/DriveTrain.h"
-#include "subsystems/DepthCamera.h"
 
 class AutoCommand : public frc2::CommandHelper<frc2::SequentialCommandGroup, AutoCommand>
 {
     public:
-        AutoCommand(DriveTrain* drive, DepthCamera* camera);
+        AutoCommand(DriveTrain* drive);
 };
