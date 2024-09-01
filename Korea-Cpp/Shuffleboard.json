@@ -1,0 +1,514 @@
+{
+  "tabPane": [
+    {
+      "title": "Lidar",
+      "autoPopulate": false,
+      "autoPopulatePrefix": "",
+      "widgetPane": {
+        "gridSize": 125.0,
+        "showGrid": false,
+        "hgap": 8.0,
+        "vgap": 8.0,
+        "tiles": {
+          "0,0": {
+            "size": [
+              5,
+              5
+            ],
+            "content": {
+              "_type": "Camera Stream",
+              "_source0": "camera_server://map_view",
+              "_title": "Map",
+              "Crosshair/Show crosshair": false,
+              "Crosshair/Crosshair color": "#FFFFFFFF",
+              "Controls/Show controls": false,
+              "Controls/Rotation": "NONE",
+              "compression": -1.0,
+              "fps": -1,
+              "imageWidth": 0,
+              "imageHeight": 0
+            }
+          },
+          "7,0": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Boolean Box",
+              "_source0": "network_table:///Table/LED_Green",
+              "_title": "LED_Green",
+              "Colors/Color when true": "#00FF00FF",
+              "Colors/Color when false": "#000000FF"
+            }
+          },
+          "6,1": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Boolean Box",
+              "_source0": "network_table:///Table/EMS",
+              "_title": "EMS",
+              "Colors/Color when true": "#00FF00FF",
+              "Colors/Color when false": "#000000FF"
+            }
+          },
+          "7,1": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Boolean Box",
+              "_source0": "network_table:///Table/SW1",
+              "_title": "SW1",
+              "Colors/Color when true": "#00FF00FF",
+              "Colors/Color when false": "#000000FF"
+            }
+          },
+          "8,1": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Boolean Box",
+              "_source0": "network_table:///Table/SW2",
+              "_title": "SW2",
+              "Colors/Color when true": "#00FF00FF",
+              "Colors/Color when false": "#000000FF"
+            }
+          },
+          "9,0": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///Table/Voltage",
+              "_title": "Voltage"
+            }
+          },
+          "8,0": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Boolean Box",
+              "_source0": "network_table:///Table/LED_Red",
+              "_title": "LED_Red",
+              "Colors/Color when true": "#00FF00FF",
+              "Colors/Color when false": "#000000FF"
+            }
+          },
+          "6,3": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///Table/VelocityX",
+              "_title": "VelocityX"
+            }
+          },
+          "7,3": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///Table/VelocityY",
+              "_title": "VelocityY"
+            }
+          },
+          "8,3": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///Table/VelocityW",
+              "_title": "VelocityW"
+            }
+          },
+          "6,0": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Boolean Box",
+              "_source0": "network_table:///Table/PathPlanning",
+              "_title": "PathPlanning",
+              "Colors/Color when true": "#00FF00FF",
+              "Colors/Color when false": "#000000FF"
+            }
+          },
+          "9,1": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Boolean Box",
+              "_source0": "network_table:///Table/SW3",
+              "_title": "SW3",
+              "Colors/Color when true": "#00FF00FF",
+              "Colors/Color when false": "#000000FF"
+            }
+          },
+          "6,2": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///Table/RobotPoseX",
+              "_title": "RobotPoseX"
+            }
+          },
+          "7,2": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///Table/RobotPoseY",
+              "_title": "RobotPoseY"
+            }
+          },
+          "8,2": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///Table/RobotPoseW",
+              "_title": "RobotPoseW"
+            }
+          },
+          "9,2": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///Table/Gyro",
+              "_title": "Gyro"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "SignalTest",
+      "autoPopulate": false,
+      "autoPopulatePrefix": "",
+      "widgetPane": {
+        "gridSize": 125.0,
+        "showGrid": false,
+        "hgap": 8.0,
+        "vgap": 8.0,
+        "tiles": {
+          "0,1": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Boolean Box",
+              "_source0": "network_table:///Table/EMS",
+              "_title": "EMS",
+              "Colors/Color when true": "#00FF00FF",
+              "Colors/Color when false": "#000000FF"
+            }
+          },
+          "1,1": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Boolean Box",
+              "_source0": "network_table:///Table/SW1",
+              "_title": "SW1",
+              "Colors/Color when true": "#00FF00FF",
+              "Colors/Color when false": "#000000FF"
+            }
+          },
+          "2,1": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Boolean Box",
+              "_source0": "network_table:///Table/SW2",
+              "_title": "SW2",
+              "Colors/Color when true": "#00FF00FF",
+              "Colors/Color when false": "#000000FF"
+            }
+          },
+          "3,1": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Boolean Box",
+              "_source0": "network_table:///Table/SW3",
+              "_title": "SW3",
+              "Colors/Color when true": "#00FF00FF",
+              "Colors/Color when false": "#000000FF"
+            }
+          },
+          "0,0": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Toggle Button",
+              "_source0": "network_table:///Table/LED_Green",
+              "_title": "LED_G"
+            }
+          },
+          "1,0": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Toggle Button",
+              "_source0": "network_table:///Table/LED_Red",
+              "_title": "LED_R"
+            }
+          },
+          "0,3": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Number Slider",
+              "_source0": "network_table:///Table/Motor0",
+              "_title": "Motor0",
+              "Slider Settings/Min": -1.0,
+              "Slider Settings/Max": 1.0,
+              "Slider Settings/Block increment": 0.0625
+            }
+          },
+          "1,3": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Number Slider",
+              "_source0": "network_table:///Table/Motor1",
+              "_title": "Motor1",
+              "Slider Settings/Min": -1.0,
+              "Slider Settings/Max": 1.0,
+              "Slider Settings/Block increment": 0.0625
+            }
+          },
+          "2,3": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Number Slider",
+              "_source0": "network_table:///Table/Motor2",
+              "_title": "Motor2",
+              "Slider Settings/Min": -1.0,
+              "Slider Settings/Max": 1.0,
+              "Slider Settings/Block increment": 0.0625
+            }
+          },
+          "3,3": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Number Slider",
+              "_source0": "network_table:///Table/Motor3",
+              "_title": "Motor3",
+              "Slider Settings/Min": -1.0,
+              "Slider Settings/Max": 1.0,
+              "Slider Settings/Block increment": 0.0625
+            }
+          },
+          "0,2": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Toggle Button",
+              "_source0": "network_table:///Table/MotorEnable0",
+              "_title": "MotorEnable0"
+            }
+          },
+          "1,2": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Toggle Button",
+              "_source0": "network_table:///Table/MotorEnable1",
+              "_title": "MotorEnable1"
+            }
+          },
+          "2,2": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Toggle Button",
+              "_source0": "network_table:///Table/MotorEnable2",
+              "_title": "MotorEnable2"
+            }
+          },
+          "3,2": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Toggle Button",
+              "_source0": "network_table:///Table/MotorEnable3",
+              "_title": "MotorEnable3"
+            }
+          },
+          "3,0": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///Table/Voltage",
+              "_title": "Voltage"
+            }
+          },
+          "2,0": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Toggle Button",
+              "_source0": "network_table:///Table/SignalTest",
+              "_title": "SignalTest"
+            }
+          },
+          "5,0": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///Table/LidarForward",
+              "_title": "LidarForward"
+            }
+          },
+          "6,0": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///Table/LidarLeft",
+              "_title": "LidarLeft"
+            }
+          },
+          "7,0": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///Table/LidarRight",
+              "_title": "LidarRight"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Tab 3",
+      "autoPopulate": false,
+      "autoPopulatePrefix": "",
+      "widgetPane": {
+        "gridSize": 128.0,
+        "showGrid": true,
+        "hgap": 16.0,
+        "vgap": 16.0,
+        "tiles": {
+          "4,0": {
+            "size": [
+              4,
+              5
+            ],
+            "content": {
+              "_type": "Camera Stream",
+              "_source0": "camera_server://costmap_view",
+              "_title": "costmap_view",
+              "Crosshair/Show crosshair": false,
+              "Crosshair/Crosshair color": "#FFFFFFFF",
+              "Controls/Show controls": false,
+              "Controls/Rotation": "NONE",
+              "compression": -1.0,
+              "fps": -1,
+              "imageWidth": -1,
+              "imageHeight": -1
+            }
+          },
+          "0,0": {
+            "size": [
+              4,
+              5
+            ],
+            "content": {
+              "_type": "Camera Stream",
+              "_source0": "camera_server://map_view",
+              "_title": "map_view",
+              "Crosshair/Show crosshair": false,
+              "Crosshair/Crosshair color": "#FFFFFFFF",
+              "Controls/Show controls": false,
+              "Controls/Rotation": "NONE",
+              "compression": -1.0,
+              "fps": -1,
+              "imageWidth": 0,
+              "imageHeight": 0
+            }
+          }
+        }
+      }
+    }
+  ],
+  "windowGeometry": {
+    "x": -1446.5,
+    "y": -6.5,
+    "width": 1453.0,
+    "height": 865.0
+  }
+}
